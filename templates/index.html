@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crop Recommendation System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #E6F7F2; /* Light, fresh greenish-blue background */
+    }
+
+    h1 {
+      color: #004d40; /* Dark teal for a natural, earthy feel */
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #333333;
+    }
+
+    form {
+      background-color: #FFFFFF;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-lg, .btn {
+      background-color: #388E3C; /* Vibrant green button */
+      border: none;
+    }
+
+    .btn-lg:hover {
+      background-color: #2E7D32; /* Darker green on hover */
+    }
+
+    .card {
+      margin-top: 20px;
+      background-color: #004d40; /* Dark teal card background */
+      color: #FFFFFF;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .card img {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      background-color: #00695C; /* Teal navbar background */
+    }
+
+    .navbar-brand {
+      color: #FFFFFF;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .navbar-brand:hover {
+      color: #B2DFDB; /* Light aqua hover effect */
+    }
+
+    .navbar-center {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* Bouncing dots animation for loading */
+    .loading-dots span {
+      display: inline-block;
+      font-size: 1.5rem;
+      animation: bounce 1.5s infinite;
+    }
+
+    .loading-dots span:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .loading-dots span:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .loading-dots span:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+<!--=======================Centered Navbar=====================================================-->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <div class="navbar-center">
+      <a class="navbar-brand" href="/">Crop Recommendation System Using Machine Learning</a>
+    </div>
+  </div>
+</nav>
+
+<!--=======================Form Section================================================-->
+<div class="container my-5">
+  <h1>Crop Recommendation System 🌱</h1>
+  <form action="/predict" method="POST">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="Nitrogen">Nitrogen</label>
+        <input type="number" id="Nitrogen" name="Nitrogen" placeholder="Enter Nitrogen" class="form-control" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="Phosporus">Phosphorus</label>
+        <input type="number" id="Phosporus" name="Phosporus" placeholder="Enter Phosphorus" class="form-control" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="Potassium">Potassium</label>
+        <input type="number" id="Potassium" name="Potassium" placeholder="Enter Potassium" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="Temperature">Temperature (°C)</label>
+        <input type="number" step="0.01" id="Temperature" name="Temperature" placeholder="Enter Temperature" class="form-control" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="Humidity">Humidity (%)</label>
+        <input type="number" step="0.01" id="Humidity" name="Humidity" placeholder="Enter Humidity" class="form-control" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="pH">pH Value</label>
+        <input type="number" step="0.01" id="pH" name="pH" placeholder="Enter pH value" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="Rainfall">Rainfall (mm)</label>
+        <input type="number" step="0.01" id="Rainfall" name="Rainfall" placeholder="Enter Rainfall" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="text-center mt-3">
+      <button type="submit" class="btn btn-lg text-white">Get Recommendation</button>
+      <button type="reset" class="btn btn-lg text-white">Reset</button>
+    </div>
+  </form>
+
+  <!--=======================Recommendation Card================================================-->
+  {% if result %}
+  <div class="card mx-auto mt-4" style="max-width: 400px;">
+    <div id="loading-spinner" class="text-center mt-4" style="display: none;">
+      <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p>Please wait, fetching recommendation...</p>
+      <p class="loading-dots">
+        Loading<span>.</span><span>.</span><span>.</span>
+      </p>
+    </div>
+    <img src="{{url_for('static', filename='crop.png')}}" alt="Crop Image" class="card-img-top">
+    <h5 class="card-title mt-3">Recommended Crop for Cultivation:</h5>
+    <p id="result-text" class="card-text">{{ result }}</p>
+  </div>
+  {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Select the form, loading spinner, and result text
+  document.addEventListener("DOMContentLoaded", function() {
+  // Select the form, loading spinner, and result text
+  const form = document.querySelector("form");
+  const spinner = document.getElementById("loading-spinner");
+  const resultText = document.getElementById("result-text");
+
+  // Show spinner when the form is submitted
+  form.addEventListener("submit", function () {
+    // Show the spinner
+    spinner.style.display = "block";
+
+    // Optional: Show a temporary "Loading..." message in the result section
+    if (resultText) {
+      resultText.textContent = "Loading..."; 
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>
