@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+         html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        .fertilizer-card {
+            margin-top: 20px;
+            background-color: #5e7c43;
+            width: 80%;
+            color: #FFFFFF;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fertilizer-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .container h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        h3 {
+            color:white;
+            font-size: 1.5rem;
+        }
+        /* Navbar Styling */
+/* Navbar Styling */
+.navbar {
+            background-color: #00695C; /* Teal navbar background */
+        }
+
+    /* Navbar Styles */
+/* Navbar Styles */
+.navbar {
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom container to center align the content */
+.container1 {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Navbar Brand Styling */
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ffffff !important;
+}
+
+/* Navigation Links */
+.navbar-nav .nav-item {
+    margin: 0 15px;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Hover Effect */
+.navbar-nav .nav-link:hover {
+    color: #00c853 !important; /* Green hover effect */
+    transform: scale(1.1);
+}
+
+/* Active Link Styling */
+.navbar-nav .nav-link.active {
+    border-bottom: 3px solid #00c853;
+    padding-bottom: 3px;
+}
+
+/* Responsive Styling */
+@media (max-width: 991px) {
+    .navbar-nav {
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0;
+    }
+}
+
+
+/* Responsive Styling */
+@media (max-width: 991px) {
+    .navbar-nav {
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0;
+    }
+}
+        
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
+        <div class="container1">
+          <a class="navbar-brand mx-auto" href="/">Crop Recommendation System</a>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:5000/crops">Crops</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:5000/fertilizer">Fertilizer</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container my-5">
+        <h2>Fertilizer Details for Crops</h2>
+
+        <div id="grapes" class="fertilizer-card">
+            <h3>🍇 Grapes - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> NPK (10-10-10)</p>
+            <p>Apply fertilizer every 30-45 days to boost fruit quality. Avoid excessive nitrogen.</p>
+            <p><strong>Usage:</strong> 2 kg per plant, split in 3 doses</p>
+            <p><strong>Gap Between Uses:</strong> 30-45 days</p>
+        </div>
+
+        <div id="mango" class="fertilizer-card">
+            <h3>🥭 Mango - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Farmyard Manure (FYM) + NPK (15-15-15)</p>
+            <p>Apply before flowering and after fruit set to ensure proper development.</p>
+            <p><strong>Usage:</strong> 2-3 kg per tree annually</p>
+            <p><strong>Gap Between Uses:</strong> 4-6 months</p>
+        </div>
+
+        <div id="rice" class="fertilizer-card">
+            <h3>🌾 Rice - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Urea + DAP</p>
+            <p>Rice requires nitrogen for vegetative growth and phosphorus for grain production.</p>
+            <p><strong>Usage:</strong> 50-60 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> Every 30 days</p>
+        </div>
+
+        <div id="maize" class="fertilizer-card">
+            <h3>🌽 Maize - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> NPK (20-20-20) + Zinc</p>
+            <p>Apply at early growth stages and again at flowering for optimal yield.</p>
+            <p><strong>Usage:</strong> 50-55 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> 40-50 days</p>
+        </div>
+
+        <div id="jute" class="fertilizer-card">
+            <h3>🧵 Jute - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Urea + Phosphate</p>
+            <p>Apply nitrogen-rich fertilizers during the early growth phase for strong fiber.</p>
+            <p><strong>Usage:</strong> 25-30 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> 30-45 days</p>
+        </div>
+
+        <div id="cotton" class="fertilizer-card">
+            <h3>🧥 Cotton - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> NPK (18-46-0) + Potassium Sulfate</p>
+            <p>Apply fertilizers before flowering and at boll formation.</p>
+            <p><strong>Usage:</strong> 45-50 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> 50-60 days</p>
+        </div>
+
+        <div id="coconut" class="fertilizer-card">
+            <h3>🥥 Coconut - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Organic Manure + Potash</p>
+            <p>Apply manure and potassium to improve nut size and quality.</p>
+            <p><strong>Usage:</strong> 2-3 kg per tree</p>
+            <p><strong>Gap Between Uses:</strong> Every 4 months</p>
+        </div>
+
+        <div id="papaya" class="fertilizer-card">
+            <h3>🍈 Papaya - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> NPK (12-12-17) + Magnesium</p>
+            <p>Apply at the root zone for healthy fruit development.</p>
+            <p><strong>Usage:</strong> 1 kg per plant</p>
+            <p><strong>Gap Between Uses:</strong> Every 2 months</p>
+        </div>
+
+        <div id="mango" class="fertilizer-card">
+            <h3>🥭 Mango - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Farmyard Manure (FYM) + NPK (15-15-15)</p>
+            <p>Mango trees need organic manure combined with NPK to boost flowering and fruiting. Fertilizer should be applied before flowering and again after fruit set.</p>
+            <p><strong>Usage:</strong> 2-3 kg per tree annually</p>
+            <p><strong>Gap Between Uses:</strong> 4-6 months</p>
+        </div>
+
+        <div id="banana" class="fertilizer-card">
+            <h3>🍌 Banana - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Urea + MOP (Muriate of Potash)</p>
+            <p>Bananas need high nitrogen and potassium for vigorous growth and fruit development. Apply fertilizer in split doses to maximize absorption.</p>
+            <p><strong>Usage:</strong> 250g Urea & 200g MOP per plant</p>
+            <p><strong>Gap Between Uses:</strong> Every 20-30 days</p>
+        </div>
+
+        <div id="pomegranate" class="fertilizer-card">
+            <h3>🍎 Pomegranate - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> NPK (17-17-17) + Zinc Sulfate</p>
+            <p>Pomegranates require balanced nutrition, especially zinc, for proper fruit setting. Apply fertilizers in two main doses.</p>
+            <p><strong>Usage:</strong> 1.5-2 kg per tree</p>
+            <p><strong>Gap Between Uses:</strong> 3-4 months</p>
+        </div>
+
+        <div id="lentil" class="fertilizer-card">
+            <h3>🌱 Lentil - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> DAP (Di-ammonium Phosphate) + Rhizobium Culture</p>
+            <p>Lentils need phosphorus-rich fertilizers for root development and rhizobium for nitrogen fixation. Apply at sowing time.</p>
+            <p><strong>Usage:</strong> 20-25 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> Once per season</p>
+        </div>
+
+        <div id="blackgram" class="fertilizer-card">
+            <h3>🌾 Blackgram - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Urea + Phosphate</p>
+            <p>Blackgram benefits from phosphorus for root growth and moderate nitrogen for leafy development. Apply before flowering.</p>
+            <p><strong>Usage:</strong> 15-20 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> Every 45-60 days</p>
+        </div>
+
+        <div id="mungbean" class="fertilizer-card">
+            <h3>🌱 Mungbean - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Biofertilizers + Potash</p>
+            <p>Mungbeans require nitrogen-fixing bacteria and potassium to promote growth. Use biofertilizers during sowing.</p>
+            <p><strong>Usage:</strong> 12-15 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> Once per season</p>
+        </div>
+
+        <div id="mothbeans" class="fertilizer-card">
+            <h3>🌾 Mothbeans - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> NPK (20-20-10) + Gypsum</p>
+            <p>Mothbeans require a combination of nitrogen and gypsum to improve pod filling. Apply during early vegetative stages.</p>
+            <p><strong>Usage:</strong> 10-15 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> Once every 50 days</p>
+        </div>
+
+        <div id="pigeonpeas" class="fertilizer-card">
+            <h3>🌿 Pigeon Peas - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> NPK (18-46-0) + Boron</p>
+            <p>Pigeon peas require phosphorus and boron for strong root development and pod formation. Apply at sowing and after flowering.</p>
+            <p><strong>Usage:</strong> 15-20 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> Twice per season</p>
+        </div>
+
+        <div id="kidneybeans" class="fertilizer-card">
+            <h3>🫘 Kidney Beans - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Ammonium Sulfate + Phosphate</p>
+            <p>Kidney beans need sulfur-rich fertilizers to enhance protein content and phosphorus for seed production. Apply before flowering.</p>
+            <p><strong>Usage:</strong> 20-25 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> 50-60 days</p>
+        </div>
+
+        <div id="chickpea" class="fertilizer-card">
+            <h3>🌾 Chickpea - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> DAP (Di-ammonium Phosphate) + Potash</p>
+            <p>Chickpeas require phosphorus for nodulation and potassium for better yield. Apply fertilizers before sowing and during pod formation.</p>
+            <p><strong>Usage:</strong> 18-20 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> Twice per season</p>
+        </div>
+
+        <div id="orange" class="fertilizer-card">
+            <h3>🍊 Orange - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Calcium Nitrate + Zinc</p>
+            <p>Boosts fruit size and prevents deficiencies. Apply before flowering.</p>
+            <p><strong>Usage:</strong> 2-3 kg per tree</p>
+            <p><strong>Gap Between Uses:</strong> Every 4-5 months</p>
+        </div>
+
+        <div id="apple" class="fertilizer-card">
+            <h3>🍏 Apple - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Urea + Potassium Nitrate</p>
+            <p>Apply before flowering and after fruit set to improve yield.</p>
+            <p><strong>Usage:</strong> 2.5-3 kg per tree</p>
+            <p><strong>Gap Between Uses:</strong> 6 months</p>
+        </div>
+
+        <div id="watermelon" class="fertilizer-card">
+            <h3>🍉 Watermelon - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> NPK (14-14-14) + Calcium</p>
+            <p>Ensures proper fruit set and prevents cracking.</p>
+            <p><strong>Usage:</strong> 20-25 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> 30-40 days</p>
+        </div>
+
+        <div id="coffee" class="fertilizer-card">
+            <h3>☕ Coffee - Fertilizer</h3>
+            <hr>
+            <p><strong>Recommended Fertilizer:</strong> Urea + Phosphate</p>
+            <p>Apply nitrogen for plant growth and phosphorus for bean development.</p>
+            <p><strong>Usage:</strong> 50-60 kg per hectare</p>
+            <p><strong>Gap Between Uses:</strong> 3-4 months</p>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll(".fertilizer-card");
+            
+            function revealCards() {
+                cards.forEach(card => {
+                    const cardPosition = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    if (cardPosition < windowHeight - 50) {
+                        card.classList.add("visible");
+                    }
+                });
+            }
+            
+            window.addEventListener("scroll", revealCards);
+            revealCards();
+        });
+    </script>
+</body>
+</html>

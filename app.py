@@ -15,6 +15,15 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route('/crops')
+def crops():
+    return render_template("crops.html")
+
+@app.route('/fertilizer')
+def fertilizer():
+    return render_template("fertilizer.html")
+
+
 @app.route("/predict",methods=['POST'])
 def predict():
     N = request.form['Nitrogen']
