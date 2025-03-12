@@ -217,8 +217,14 @@
     </div>
     <img src="{{url_for('static', filename='crop.png')}}" alt="Crop Image" class="card-img-top">
     <h5 class="card-title mt-3">Recommended Crop for Cultivation:</h5>
-    <p id="result-text" class="card-text">{{ result }}</p>
+    <p id="result-text" class="card-textigatw">{{ result }}</p>
+    <div class="mt-3">
+      <a href="http://127.0.0.1:5000/crops#{{ result.split()[0] | lower }}" class="btn btn-lg text-white">
+        Learn More About Crops
+      </a>          
+    </div>
   </div>
+
   {% endif %}
 </div>
 
